@@ -15,13 +15,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.7
-import QtQuick.Layouts 1.3 as QtLayouts
-import QtQuick.Controls 1.4 as QtControls
+import QtQuick 2.15
+import QtQuick.Layouts 
+import QtQuick.Controls
 
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
-import org.kde.plasma.plasmoid 2.0
 
 import "../code/phases.js" as Phases
 import "../code/lunacalc.js" as LunaCalc
@@ -95,19 +94,19 @@ Item {
 
     /** CONFIGURATION **/
     //ICON
-    property bool showBackground: Plasmoid.configuration.showBackground
-    property bool hemisphere: Plasmoid.configuration.hemisphere
-    property int updateInterval: Plasmoid.configuration.updateInterval
+    property bool showBackground: configuration.showBackground
+    property bool hemisphere: configuration.hemisphere
+    property int updateInterval: configuration.updateInterval
 
     //POPUP
-    property int dateFormat: Plasmoid.configuration.dateFormat
-    property string dateFormatString: Plasmoid.configuration.dateFormatString
-    property bool buttonTextVisible: Plasmoid.configuration.buttonTextVisible
+    property int dateFormat: configuration.dateFormat
+    property string dateFormatString: configuration.dateFormatString
+    property bool buttonTextVisible: configuration.buttonTextVisible
 
     //Colors
-    property string backgroundColor: Plasmoid.configuration.backgroundColor
-    property string primaryFontColor: Plasmoid.configuration.primaryFontColor
-    property string secondaryFontColor: Plasmoid.configuration.secondaryFontColor
+    property string backgroundColor: configuration.backgroundColor
+    property string primaryFontColor: configuration.primaryFontColor
+    property string secondaryFontColor: configuration.secondaryFontColor
 
     /** PROPERTIES **/
     property var phases: LunaCalc.reloadPhases()
@@ -123,25 +122,25 @@ Item {
     }
 
     /** PLASMOID DETAILS **/
-    Plasmoid.backgroundHints: showBackground ? "DefaultBackground" : "NoBackground"
-    Plasmoid.preferredRepresentation: Plasmoid.compactRepresentation
+    backgroundHints: showBackground ? "DefaultBackground" : "NoBackground"
+    preferredRepresentation: compactRepresentation
 
-    Plasmoid.toolTipMainText: currentPhase.text
-    Plasmoid.toolTipSubText: currentPhase.subText
+    toolTipMainText: currentPhase.text
+    toolTipSubText: currentPhase.subText
 
     /** COMPACT **/
-    Plasmoid.compactRepresentation: Component {
+    compactRepresentation: Component {
         MouseArea {
             id: compactRoot
 
             onClicked: plasmoid.expanded = !plasmoid.expanded
 
-            PlasmaCore.Svg {
+            Ksvg.Svg {
                 id: lunaSvg
                 imagePath: plasmoid.file("images", "luna-gskbyte" + root.currentPhase.number + ".svg");
             }
 
-            PlasmaCore.SvgItem {
+            Ksvg.SvgItem {
                 id: lunaSvgItem
 
                 anchors.fill: parent
@@ -157,7 +156,7 @@ Item {
     }
 
     /** FULL **/
-    Plasmoid.fullRepresentation: Rectangle {
+    fullRepresentation: Rectangle {
         id: iAmJustHereForCustomBackgroundColor
         QtLayouts.Layout.preferredWidth: fullRoot.QtLayouts.Layout.minimumWidth + units.smallSpacing
         QtLayouts.Layout.preferredHeight: fullRoot.QtLayouts.Layout.minimumHeight + units.smallSpacing
