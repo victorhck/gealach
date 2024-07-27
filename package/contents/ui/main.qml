@@ -19,16 +19,16 @@ import QtQuick
 import QtQuick.Layouts 
 import QtQuick.Controls
 
-import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.plasma.core as PlasmaCore
+import org.kde.plasma.components as PlasmaComponents
 import org.kde.kirigami as Kirigami
 
 import "../code/phases.js" as Phases
 import "../code/lunacalc.js" as LunaCalc
 
 
-Item {
-    id: root
+PlasmoidItem {
+    id: main
     //** outsourcing function as a workaround for bug#3 (https://github.com/Koffeinfriedhof/gealach/issues/3)**//
     function getCurrentPhase() // this function assumes that today is between phases[0] (last new moon) and phases[4] (next new moon)
     {
@@ -134,11 +134,11 @@ Item {
         MouseArea {
             id: compactRoot
 
-            onClicked: plasmoid.expanded = !plasmoid.expanded
+            onClicked: plasmoidItem.expanded = !plasmoidItem.expanded
 
             Ksvg.Svg {
                 id: lunaSvg
-                imagePath: plasmoid.file("images", "luna-gskbyte" + root.currentPhase.number + ".svg");
+                imagePath: plasmoidItem.file("images", "luna-gskbyte" + root.currentPhase.number + ".svg");
             }
 
             Ksvg.SvgItem {
