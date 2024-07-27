@@ -15,12 +15,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.15
+import QtQuick 
 import QtQuick.Layouts 
 import QtQuick.Controls
 
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.kirigami as Kirigami
 
 import "../code/phases.js" as Phases
 import "../code/lunacalc.js" as LunaCalc
