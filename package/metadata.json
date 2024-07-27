@@ -1,0 +1,22 @@
+{
+  "KPackageStructure": "Plasma/Applet",
+  "KPlugin": {
+    "Authors": [
+      {
+        "Name": "koffeinfriedhof"
+      },
+      {
+        "Name": "Victorhck"
+      }
+    ],
+    "Category": "Astronomy",
+    "Description": "Display moon phases for your location.",
+    "Icon": "preferences-system-time",
+    "Id": "com.github.victorhck.gealach",
+    "Name": "Gealach",
+    "Version": "0.1",
+    "License": "GPL2",
+    "Website": "https://github.com/victorhck/gealach"
+  },
+  "X-Plasma-API-Minimum-Version": "6.0"
+}
